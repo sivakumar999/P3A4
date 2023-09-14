@@ -6,7 +6,7 @@ pipeline {
                 script {
                     try {
                         // Checkout the source code from the Git repository
-                        checkout scm
+                        git branch: 'master', credentialsId: 'your-credentials-id', url: 'https://github.com/sivakumar999/P3A4.git'
                     } catch (err) {
                         // Handle error
                         error "Failed to checkout source code: ${err}"
