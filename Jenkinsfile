@@ -1,12 +1,12 @@
 pipeline {
     agent any
     stages {
-        stage('Checkout') {
+       stage('Checkout') {
             steps {
                 script {
                     try {
                         // Checkout the source code from the Git repository
-                        git branch: 'master', credentialsId: 'githubLogin', url: 'https://github.com/sivakumar999/P3A4.git'
+                        checkout scm
                     } catch (err) {
                         // Handle error
                         error "Failed to checkout source code: ${err}"
