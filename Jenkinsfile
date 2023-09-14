@@ -29,7 +29,7 @@ pipeline {
     post {
         failure {
             // Add error handling and notifications here
-            mail to: 'your@email.com', subject: 'Pipeline Failed', body: 'The Jenkins pipeline failed.'
+            mail to: 'sivakumar59498gmail.com', subject: 'Pipeline Failed', body: 'The Jenkins pipeline failed.'
         }
     }
 }
