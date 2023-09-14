@@ -19,7 +19,7 @@ pipeline {
                 script {
                     try {
                         // Build the .NET Core Web API project
-                        powershell  'dotnet build Assign4.csproj'
+                        bat 'dotnet build YourWebApiProject.csproj'
                     } catch (err) {
                         // Handle error
                         error "Failed to build the project: ${err}"
@@ -32,7 +32,7 @@ pipeline {
                 script {
                     try {
                         // Run unit tests
-                        powershell  'dotnet test Assign4.Tests.csproj'
+                        bat 'dotnet test YourWebApiProject.Tests.csproj'
                     } catch (err) {
                         // Handle error
                         error "Failed to run tests: ${err}"
@@ -45,7 +45,7 @@ pipeline {
                 script {
                     try {
                         // Publish the Web API project
-                        powershell  'dotnet publish Assign4.csproj -c Release -o .\\publish'
+                        bat 'dotnet publish YourWebApiProject.csproj -c Release -o .\\publish'
                     } catch (err) {
                         // Handle error
                         error "Failed to publish the project: ${err}"
