@@ -6,7 +6,7 @@ pipeline {
                 script {
                     try {
                         // Checkout the source code from the Git repository
-                        checkout scm
+                        checkout git
                     } catch (err) {
                         // Handle error
                         error "Failed to checkout source code: ${err}"
