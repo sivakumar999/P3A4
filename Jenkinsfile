@@ -1,57 +1,35 @@
 pipeline {
     agent any
     stages {
-       stage('Checkout') {
+        stage('Checkout') {
             steps {
-                script {
-                    try {
-                        // Checkout the source code from the Git repository
-                        checkout scm
-                    } catch (err) {
-                        // Handle error
-                        error "Failed to checkout source code: ${err}"
-                    }
-                }
+                // Checkout the source code from your repository
+                checkout scm
             }
         }
         stage('Build') {
             steps {
-                script {
-                    try {
-                        // Build the .NET Core Web API project
-                        sh 'dotnet build Assign4.csproj'
-                    } catch (err) {
-                        // Handle error
-                        error "Failed to build the project: ${err}"
-                    }
-                }
+                // Build the .NET Core Web API project
+                sh 'dotnet build'
             }
         }
         stage('Test') {
             steps {
-                script {
-                    try {
-                        // Run unit tests
-                        bat 'dotnet test Assign4.Tests.csproj'
-                    } catch (err) {
-                        // Handle error
-                        error "Failed to run tests: ${err}"
-                    }
-                }
+                // Run unit tests
+                sh 'dotnet test'
             }
         }
         stage('Publish') {
             steps {
-                script {
-                    try {
-                        // Publish the Web API project
-                        bat 'dotnet publish Assign4.csproj -c Release -o .\\publish'
-                    } catch (err) {
-                        // Handle error
-                        error "Failed to publish the project: ${err}"
-                    }
-                }
+                // Publish the Web API project
+                sh 'dotnet publish -c Release -o ./publish'
             }
+        }
+    }
+    post {
+        failure {
+            // Add error handling and notifications here
+            mail to: 'your@email.com', subject: 'Pipeline Failed', body: 'The Jenkins pipeline failed.'
         }
     }
 }
