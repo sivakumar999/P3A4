@@ -19,7 +19,7 @@ pipeline {
                 script {
                     try {
                         // Build the .NET Core Web API project
-                        bat 'dotnet build YourWebApiProject.csproj'
+                        sh 'dotnet build YourWebApiProject.csproj'
                     } catch (err) {
                         // Handle error
                         error "Failed to build the project: ${err}"
