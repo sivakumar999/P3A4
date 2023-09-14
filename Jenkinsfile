@@ -4,7 +4,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Checkout the source code from your repository
-                checkout scm
+                checkout git
             }
         }
         stage('Build') {
